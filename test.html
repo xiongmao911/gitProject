@@ -5,6 +5,33 @@
     <title>Title</title>
 </head>
 <body>
-
+    <div id="app"></div>
+    <script src="bower_components/react/react.development.js"></script>
+    <script src="bower_components/react/react-dom.development.js"></script>
+    <script src="bower_components/babel/browser.min.js"></script>
+    <script type="text/babel">
+        var arr = [
+            <h1>Hello,world!</h1>,
+            <h2>React is awesome</h2>,
+        ];
+        /*ReactDOM.render(
+            <div>{arr}</div>,
+            document.getElementById("app")
+        );
+        这样就是一个warning报错，如果需要显示数组，则需要进行数组的遍历*/
+        ReactDOM.render(
+            <div>
+                {
+                    arr.map(function (ele,i) {
+                        return <div key={i}>{ele}</div>
+                    })
+                }
+            </div>,
+            document.getElementById("app")
+        )
+        /*这样的效果跟一开始注释的在页面效果看不出有什么区别，但是在审查元素的时候，就有区别了，
+        * 第一种，是将整个arr的元素都放在同一个div框中，但是这就不是的，是将arr的元素分别放入
+        * 两个不同的div框中*/
+    </script>
 </body>
 </html>

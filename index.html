@@ -8,9 +8,22 @@
     <div id="app"></div>
     <script src="bower_components/react/react.development.js"></script>
     <script src="bower_components/react/react-dom.development.js"></script>
-    <script src="bower_components/babel/browser.min.js"></script>
+    <script src="bower_components/babel/browser.js"></script>
     <script type="text/babel">
-
+        var names=["Alice","Emily","Kate"];
+        ReactDOM.render(
+            <div>
+                {
+                    names.map(function (name,i) {
+                        /*这里要注意一下，names是一个数组，在react中map遍历，是需要有key值的，不然
+                        * 会进行warning报错，在ReactDOM.render中return的标签中需要增加一个key={i}，
+                        * 作为唯一的标识，key值必须是要连续的*/
+                        return <div key={i}>Hello,{name}!</div>
+                    })
+                }
+            </div>,
+            document.getElementById("app")
+        );
     </script>
 </body>
 </html>
